@@ -1,0 +1,47 @@
+name: Release Dist
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to upload the dist asset to
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-upload:
+    name: Build and upload dist
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static export
+        run: bun run build
+
+      - name: Package dist
+        run: |
+          test -d out
+          rm -rf dist dist.zip
+          cp -R out dist
+          zip -r dist.zip dist
+
+      - name: Upload dist to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+        run: gh release upload "$RELEASE_TAG" dist.zip --clobber
