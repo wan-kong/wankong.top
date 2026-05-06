@@ -6,6 +6,7 @@ import {
 	Space_Mono,
 } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import { cn } from "@/lib/utils";
 
@@ -63,6 +64,7 @@ export default function RootLayout({
 				>
 					{children}
 				</ThemeProvider>
+				<Script src="https://hm.baidu.com/hm.js?e4c288a4f33be8833523d1a62e34924a"></Script>
 			</body>
 		</html>
 	);
