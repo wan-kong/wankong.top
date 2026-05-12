@@ -8,10 +8,12 @@ import {
 	SiRaycastHex,
 	SiReact,
 	SiReactHex,
+	SiTailwindcss,
+	SiTailwindcssHex,
 	SiTypescript,
 	SiTypescriptHex,
 } from "@icons-pack/react-simple-icons";
-import { RiAiGenerate, RiSearchLine, RiShapesLine } from "@remixicon/react";
+import { RiAiGenerate, RiImageEditLine, RiSearchLine, RiShapesLine } from "@remixicon/react";
 import {
 	SkillBadge,
 	type SkillBadgeItem,
@@ -30,6 +32,10 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 	"Icon Preview": {
 		icon: <RiShapesLine />,
 		name: "Icon Preview",
+	},
+	"Image Processing": {
+		icon: <RiImageEditLine />,
+		name: "Image Processing",
 	},
 	LLM: {
 		icon: <RiAiGenerate />,
@@ -50,6 +56,10 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 	Search: {
 		icon: <RiSearchLine />,
 		name: "Search",
+	},
+	"Tailwind CSS": {
+		icon: <SiTailwindcss color={SiTailwindcssHex} />,
+		name: "Tailwind CSS",
 	},
 	TypeScript: {
 		icon: <SiTypescript color={SiTypescriptHex} />,
