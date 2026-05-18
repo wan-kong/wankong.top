@@ -10,6 +10,7 @@ const POST_EXTENSIONS = new Set([".md", ".mdx"]);
 export type BlogPostMeta = {
 	slug: string;
 	href: Route<string>;
+	hidden: boolean;
 	title: string;
 	description?: string;
 	date: string;
@@ -93,6 +94,7 @@ function toPostMeta(slug: string, data: Frontmatter): BlogPostMeta {
 		slug,
 		href: `/blog/${slug}` as Route<string>,
 		title: getString(data, "title") ?? slug,
+		hidden: !!data.hidden,
 		description: getString(data, "description"),
 		date: date.toISOString(),
 		displayDate: formatDisplayDate(date),
@@ -124,10 +126,12 @@ export const getAllBlogPosts = cache(async () => {
 	);
 	const posts = await Promise.all(postFiles.map(readPostFile));
 
-	return posts.sort(
-		(left, right) =>
-			new Date(right.date).getTime() - new Date(left.date).getTime(),
-	);
+	return posts
+		.filter((item) => !item.hidden)
+		.sort(
+			(left, right) =>
+				new Date(right.date).getTime() - new Date(left.date).getTime(),
+		);
 });
 
 export async function getBlogPostBySlug(slug: string) {
