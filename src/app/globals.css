@@ -141,8 +141,19 @@
 }
 
 @layer components {
+	.prose {
+		overflow-wrap: break-word;
+	}
+
+	.prose :where(p, li, blockquote, td, th, a) {
+		overflow-wrap: anywhere;
+		word-break: break-word;
+	}
+
 	.prose :not(pre) > code {
 		@apply rounded-none border border-border bg-muted px-1 py-0.5;
+		overflow-wrap: anywhere;
+		word-break: break-word;
 	}
 
 	.prose pre.shiki code,
