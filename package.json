@@ -6,6 +6,8 @@
 	"scripts": {
 		"dev": "portless wankong next dev",
 		"build": "next build",
+		"sync:out": "bash scripts/sync-out.sh",
+		"deploy": "bun run build && bun run sync:out",
 		"start": "next start",
 		"lint": "biome check",
 		"format": "biome format --write"
