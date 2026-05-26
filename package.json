@@ -7,7 +7,8 @@
 		"dev": "portless wankong next dev",
 		"build": "next build",
 		"sync:out": "bash scripts/sync-out.sh",
-		"deploy": "bun run build && bun run sync:out",
+		"images:webp": "node scripts/convert-images-to-webp.ts",
+		"deploy": "pnpm run build && pnpm run sync:out",
 		"start": "next start",
 		"lint": "biome check",
 		"format": "biome format --write"
@@ -47,6 +48,7 @@
 		"@types/react-dom": "^19",
 		"babel-plugin-react-compiler": "1.0.0",
 		"portless": "^0.10.3",
+		"sharp": "^0.34.5",
 		"tailwindcss": "^4",
 		"typescript": "^5"
 	},

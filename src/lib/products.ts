@@ -5,7 +5,7 @@ import {
 	SiRaycastHex,
 } from "@icons-pack/react-simple-icons";
 import { Doubao } from "@lobehub/icons";
-import { RiShapesLine } from "@remixicon/react";
+import { RiRadarLine, RiShapesLine } from "@remixicon/react";
 import type { ComponentType } from "react";
 
 export type Product = {
@@ -29,6 +29,23 @@ export type Product = {
 const iconFrameClassName = "border-border bg-background";
 
 export const products = [
+	{
+		slug: "codex-reset-monitor",
+		name: "Codex 重置监测",
+		status: "已上线",
+		statusTone: "live",
+		tagline: "监测 Codex 额度重置并及时发送提醒",
+		description:
+			"定时监测 Codex 额度重置状态的在线服务，提供邮件订阅提醒、历史记录与统计展示，便于及时获知可用额度变化。",
+		platform: "Web Service",
+		year: "2026",
+		stack: ["Next.js", "Drizzle ORM", "SQLite", "Resend"],
+		githubUrl: "https://github.com/wan-kong/codex-reset-monitor",
+		liveUrl: "https://codex.wankong.top",
+		icon: RiRadarLine,
+		iconClassName: "text-emerald-500",
+		accentClassName: iconFrameClassName,
+	},
 	{
 		slug: "doubao-nomark",
 		name: "豆包去水印",

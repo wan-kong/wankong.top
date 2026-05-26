@@ -17,7 +17,7 @@ function BlogArchiveHero() {
 			</div>
 			<div className="size-24 shrink-0 overflow-hidden rounded-full border border-border bg-muted p-1">
 				<Image
-					src="/imgs/avatar.png"
+					src="/imgs/avatar.webp"
 					width="640"
 					height={640}
 					alt="Wankong 的头像"

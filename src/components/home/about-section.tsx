@@ -135,7 +135,7 @@ export function AboutSection() {
 							健身，练出硕大的肌肉💪，可以来
 							<LinkPreview
 								url="https://gym.wankong.top"
-								imageSrc="/imgs/gym.png"
+								imageSrc="/imgs/gym.webp"
 								isStatic
 								className={cn(
 									buttonVariants({ variant: "link", size: "lg" }),
