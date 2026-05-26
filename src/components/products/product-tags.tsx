@@ -13,7 +13,13 @@ import {
 	SiTypescript,
 	SiTypescriptHex,
 } from "@icons-pack/react-simple-icons";
-import { RiAiGenerate, RiImageEditLine, RiSearchLine, RiShapesLine } from "@remixicon/react";
+import { Codex, OpenAI } from "@lobehub/icons";
+import {
+	RiAiGenerate,
+	RiImageEditLine,
+	RiSearchLine,
+	RiShapesLine,
+} from "@remixicon/react";
 import {
 	SkillBadge,
 	type SkillBadgeItem,
@@ -65,16 +71,24 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 		icon: <SiTypescript color={SiTypescriptHex} />,
 		name: "TypeScript",
 	},
+	ChatGPT: {
+		icon: <OpenAI />,
+		name: "ChatGPt",
+	},
+	Codex: {
+		icon: <Codex.Color></Codex.Color>,
+		name: "Codex",
+	},
 };
 
-export function ProductTechStack({ product }: { product: Product }) {
+export function ProductTags({ product }: { product: Product }) {
 	return (
 		<ul className="flex flex-wrap gap-2">
-			{product.stack.map((techName) => (
-				<li key={techName}>
+			{product.tags.map((tag) => (
+				<li key={tag}>
 					<SkillBadge
 						size="sm"
-						skill={TECH_BADGES[techName] ?? fallbackSkill(techName)}
+						skill={TECH_BADGES[tag] ?? fallbackSkill(tag)}
 					/>
 				</li>
 			))}

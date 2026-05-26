@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ProductActions } from "@/components/products/product-actions";
 import { ProductIcon } from "@/components/products/product-icon";
 import { ProductStatus } from "@/components/products/product-status";
-import { ProductTechStack } from "@/components/products/product-tech-stack";
+import { ProductTags } from "@/components/products/product-tags";
 import type { Product } from "@/lib/products";
 
 export function FeaturedProductCard({ product }: { product: Product }) {
@@ -73,7 +73,7 @@ export function ProductArchiveCard({
 					<ProductActions product={product} />
 				</header>
 
-				<ProductTechStack product={product} />
+				<ProductTags product={product} />
 			</div>
 		</article>
 	);

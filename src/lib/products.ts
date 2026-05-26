@@ -17,7 +17,7 @@ export type Product = {
 	description: string;
 	platform: string;
 	year: string;
-	stack: string[];
+	tags: string[];
 	githubUrl: string;
 	liveUrl?: string;
 	icon: ComponentType<{ className?: string; color?: string }>;
@@ -39,7 +39,7 @@ export const products = [
 			"定时监测 Codex 额度重置状态的在线服务，提供邮件订阅提醒、历史记录与统计展示，便于及时获知可用额度变化。",
 		platform: "Web Service",
 		year: "2026",
-		stack: ["Next.js", "Drizzle ORM", "SQLite", "Resend"],
+		tags: ["Codex", "ChatGPT", "Next.js"],
 		githubUrl: "https://github.com/wan-kong/codex-reset-monitor",
 		liveUrl: "https://codex.wankong.top",
 		icon: RiRadarLine,
@@ -56,7 +56,7 @@ export const products = [
 			"在线工具，上传豆包生成的图片即可自动识别并去除水印，支持批量处理和本地处理，保护图片隐私。",
 		platform: "Web Tool",
 		year: "2026",
-		stack: ["Next.js", "TypeScript", "Tailwind CSS", "Image Processing"],
+		tags: ["Next.js", "TypeScript", "Tailwind CSS", "Image Processing"],
 		githubUrl: "https://github.com/wan-kong/doubao-nomark-online",
 		liveUrl: "https://doubao.wankong.top",
 		icon: Doubao,
@@ -73,7 +73,7 @@ export const products = [
 			"一个 Raycast 插件，把复制来的 Git 地址变成可打开的本地路径，适合经常在多个代码目录之间切换的开发工作流。",
 		platform: "Raycast Extension",
 		year: "2025",
-		stack: ["Raycast", "TypeScript", "Git"],
+		tags: ["Raycast", "TypeScript", "Git"],
 		githubUrl: "https://github.com/wan-kong/find-your-repo",
 		icon: SiRaycast,
 		iconColor: SiRaycastHex,
@@ -89,7 +89,7 @@ export const products = [
 			"面向设计和前端实现的小工具，用更轻的方式检索、预览和确认 SF Symbols，在写界面时少打断一点节奏。",
 		platform: "Web Tool",
 		year: "2025",
-		stack: ["Next.js", "Icon Preview", "Search"],
+		tags: ["Icon Preview", "Next.js", "Search"],
 		githubUrl: "https://github.com/wan-kong/sf-symbols-online",
 		liveUrl: "https://sf-symbols-online-web.vercel.app/",
 		icon: RiShapesLine,
@@ -106,7 +106,7 @@ export const products = [
 			"用 Chrome 原生 API 和大模型能力做一个尽量直接的聊天入口，重点放在低摩擦交互和可被继续扩展的浏览器侧体验。",
 		platform: "Chrome Extension",
 		year: "2024",
-		stack: ["Chrome API", "LLM", "React"],
+		tags: ["Chrome API", "LLM", "React"],
 		githubUrl: "https://github.com/wan-kong/cani.chat",
 		liveUrl: "https://cani-chat.vercel.app/",
 		icon: SiGooglechrome,
