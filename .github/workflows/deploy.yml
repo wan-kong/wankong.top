@@ -1,0 +1,93 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-sync:
+    name: Build and sync out/
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static export
+        run: bun run build
+
+      - name: Sync out/ to remote
+        env:
+          OUT_SYNC_HOST: ${{ secrets.OUT_SYNC_HOST }}
+          OUT_SYNC_USER: ${{ secrets.OUT_SYNC_USER }}
+          OUT_SYNC_SSH_KEY: ${{ secrets.OUT_SYNC_SSH_KEY }}
+          OUT_SYNC_KNOWN_HOSTS: ${{ secrets.OUT_SYNC_KNOWN_HOSTS }}
+          OUT_SYNC_PATH: ${{ secrets.OUT_SYNC_PATH }}
+          OUT_SYNC_PORT: ${{ secrets.OUT_SYNC_PORT || '22' }}
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$OUT_SYNC_HOST" || -z "$OUT_SYNC_USER" || -z "$OUT_SYNC_SSH_KEY" || -z "$OUT_SYNC_PATH" ]]; then
+            echo "Missing required secrets: OUT_SYNC_HOST, OUT_SYNC_USER, OUT_SYNC_SSH_KEY, OUT_SYNC_PATH"
+            exit 1
+          fi
+
+          if [[ "$OUT_SYNC_PATH" == "/" || "$OUT_SYNC_PATH" == "." ]]; then
+            echo "Refusing to sync to unsafe remote path: $OUT_SYNC_PATH"
+            exit 1
+          fi
+
+          test -d out
+
+          SSH_DIR="$(mktemp -d)"
+          KEY_FILE="$SSH_DIR/id"
+          KNOWN_HOSTS="$SSH_DIR/known_hosts"
+          cleanup() { rm -rf "$SSH_DIR"; }
+          trap cleanup EXIT
+
+          install -m 600 /dev/null "$KEY_FILE"
+          printf '%s\n' "$OUT_SYNC_SSH_KEY" > "$KEY_FILE"
+
+          SSH_OPTS=(
+            -p "$OUT_SYNC_PORT"
+            -i "$KEY_FILE"
+            -o IdentitiesOnly=yes
+            -o PasswordAuthentication=no
+          )
+          SCP_OPTS=(
+            -P "$OUT_SYNC_PORT"
+            -i "$KEY_FILE"
+            -o IdentitiesOnly=yes
+            -o PasswordAuthentication=no
+          )
+
+          if [[ -n "$OUT_SYNC_KNOWN_HOSTS" ]]; then
+            printf '%s\n' "$OUT_SYNC_KNOWN_HOSTS" > "$KNOWN_HOSTS"
+            SSH_OPTS+=(-o "UserKnownHostsFile=$KNOWN_HOSTS" -o StrictHostKeyChecking=yes)
+            SCP_OPTS+=(-o "UserKnownHostsFile=$KNOWN_HOSTS" -o StrictHostKeyChecking=yes)
+          else
+            echo "::warning::OUT_SYNC_KNOWN_HOSTS not set — host key is not pinned (MITM risk)"
+            SSH_OPTS+=(-o StrictHostKeyChecking=accept-new)
+            SCP_OPTS+=(-o StrictHostKeyChecking=accept-new)
+          fi
+
+          REMOTE="$OUT_SYNC_USER@$OUT_SYNC_HOST"
+
+          echo "Syncing out/ to $REMOTE:$OUT_SYNC_PATH"
+          ssh "${SSH_OPTS[@]}" "$REMOTE" \
+            "mkdir -p '$OUT_SYNC_PATH' && find '$OUT_SYNC_PATH' -mindepth 1 -maxdepth 1 ! -name '.user.ini' -exec rm -rf {} +"
+          scp "${SCP_OPTS[@]}" -r out/. "$REMOTE:$OUT_SYNC_PATH/"
