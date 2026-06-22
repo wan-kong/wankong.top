@@ -3,6 +3,8 @@ import {
 	SiGooglechromeHex,
 	SiRaycast,
 	SiRaycastHex,
+	SiTiktok,
+	SiTiktokHex,
 } from "@icons-pack/react-simple-icons";
 import { Doubao } from "@lobehub/icons";
 import { RiRadarLine, RiShapesLine } from "@remixicon/react";
@@ -20,6 +22,7 @@ export type Product = {
 	tags: string[];
 	githubUrl: string;
 	liveUrl?: string;
+	postSlug?: string;
 	icon: ComponentType<{ className?: string; color?: string }>;
 	iconColor?: string;
 	iconClassName?: string;
@@ -29,6 +32,25 @@ export type Product = {
 const iconFrameClassName = "border-border bg-background";
 
 export const products = [
+	{
+		slug: "fuck-douyin",
+		name: "抖音净化",
+		status: "已上线",
+		statusTone: "live",
+		tagline: "让抖音网页版清清爽爽的油猴脚本",
+		description:
+			"一个油猴脚本，刷视频时自动跳过广告、直播与购物推荐并强制最高画质，进直播间则挡掉满屏礼物动画与高级弹幕，所有开关都收在可拖拽的悬浮面板里，即改即生效。",
+		platform: "Userscript",
+		year: "2026",
+		tags: ["Tampermonkey", "Douyin", "TypeScript", "Vite"],
+		githubUrl: "https://github.com/wan-kong/fuck-douyin",
+		liveUrl:
+			"https://greasyfork.org/zh-CN/scripts/583463-%E6%8A%96%E9%9F%B3%E5%87%80%E5%8C%96-douyin",
+		postSlug: "fuck-douyin",
+		icon: SiTiktok,
+		iconColor: SiTiktokHex,
+		accentClassName: iconFrameClassName,
+	},
 	{
 		slug: "codex-reset-monitor",
 		name: "Codex 重置监测",
@@ -42,6 +64,7 @@ export const products = [
 		tags: ["Codex", "ChatGPT", "Next.js"],
 		githubUrl: "https://github.com/wan-kong/codex-reset-monitor",
 		liveUrl: "https://codex.wankong.top",
+		postSlug: "codex-reset-monitor",
 		icon: RiRadarLine,
 		iconClassName: "text-emerald-500",
 		accentClassName: iconFrameClassName,

@@ -1,5 +1,6 @@
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { RiExternalLinkLine } from "@remixicon/react";
+import { RiArticleLine, RiExternalLinkLine } from "@remixicon/react";
+import Link from "next/link";
 import type { Product } from "@/lib/products";
 
 export function ProductActions({ product }: { product: Product }) {
@@ -8,6 +9,16 @@ export function ProductActions({ product }: { product: Product }) {
 			className="flex gap-2 sm:justify-end"
 			aria-label={`${product.name} links`}
 		>
+			{product.postSlug ? (
+				<Link
+					href={`/blog/${product.postSlug}`}
+					aria-label={`${product.name} 文章`}
+					className={actionClassName}
+					title={`${product.name} 文章`}
+				>
+					<RiArticleLine className="size-3.5" />
+				</Link>
+			) : null}
 			<ProductAction
 				href={product.githubUrl}
 				icon={<SiGithub className="size-3.5" />}
@@ -24,6 +35,9 @@ export function ProductActions({ product }: { product: Product }) {
 	);
 }
 
+const actionClassName =
+	"group inline-flex size-8 items-center justify-center border border-border text-muted-foreground transition-[border-color,color,background-color] hover:border-foreground/35 hover:bg-muted/50 hover:text-foreground";
+
 function ProductAction({
 	href,
 	icon,
@@ -37,7 +51,7 @@ function ProductAction({
 		<a
 			href={href}
 			aria-label={label}
-			className="group inline-flex size-8 items-center justify-center border border-border text-muted-foreground transition-[border-color,color,background-color] hover:border-foreground/35 hover:bg-muted/50 hover:text-foreground"
+			className={actionClassName}
 			rel="noreferrer"
 			target="_blank"
 			title={label}
