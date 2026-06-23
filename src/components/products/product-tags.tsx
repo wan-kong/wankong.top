@@ -10,8 +10,14 @@ import {
 	SiReactHex,
 	SiTailwindcss,
 	SiTailwindcssHex,
+	SiTampermonkey,
+	SiTampermonkeyHex,
+	SiTiktok,
+	SiTiktokHex,
 	SiTypescript,
 	SiTypescriptHex,
+	SiVite,
+	SiViteHex,
 } from "@icons-pack/react-simple-icons";
 import { Codex, OpenAI } from "@lobehub/icons";
 import {
@@ -79,6 +85,18 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 		icon: <Codex.Color></Codex.Color>,
 		name: "Codex",
 	},
+	Douyin:{
+		icon:<SiTiktok color={SiTiktokHex} />,
+		name:"Douyin"
+	},
+	"Tampermonkey":{
+		icon:<SiTampermonkey color={SiTampermonkeyHex}></SiTampermonkey>,
+		name:"Tampermonkey"
+	},
+	"Vite":{
+		icon:<SiVite  color={SiViteHex}/>,
+		name:"Vite"
+	}
 };
 
 export function ProductTags({ product }: { product: Product }) {

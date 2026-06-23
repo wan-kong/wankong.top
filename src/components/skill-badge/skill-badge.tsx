@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 export type SkillBadgeItem = {
 	icon: React.ReactNode | string;
 	name: string;
+	url?: string
 };
 
 export function SkillBadge({
