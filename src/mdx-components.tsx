@@ -3,6 +3,10 @@ import type { ComponentPropsWithoutRef } from "react";
 import { Callout } from "@/components/mdx/callout";
 import { CodeBlock } from "@/components/mdx/code-block";
 import { ConsoleView } from "@/components/mdx/console-view";
+import {
+	ScrollFadeDemo,
+	ShimmerDemo,
+} from "@/components/mdx/css-scroll-fade-shimmer-demo";
 import { GithubCard } from "@/components/mdx/github-card";
 import { ImageZoom } from "@/components/mdx/image-zoom";
 import { Kbd } from "@/components/mdx/kbd";
@@ -26,6 +30,8 @@ const components: MDXComponents = {
 	NetworkPanel,
 	NetworkInspector,
 	ConsoleView,
+	ScrollFadeDemo,
+	ShimmerDemo,
 };
 
 export function useMDXComponents(): MDXComponents {
