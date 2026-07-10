@@ -1,5 +1,9 @@
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { RiArrowRightUpLine, RiGitForkLine, RiStarLine } from "@remixicon/react";
+import {
+	RiArrowRightUpLine,
+	RiGitForkLine,
+	RiStarLine,
+} from "@remixicon/react";
 
 type GithubCardProps = {
 	repo: string;

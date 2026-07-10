@@ -1,4 +1,3 @@
-
 const SCROLL_ITEMS = [
 	{
 		title: "顶部没有渐隐",

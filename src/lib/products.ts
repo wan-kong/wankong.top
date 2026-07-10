@@ -63,7 +63,7 @@ export const products = [
 		year: "2026",
 		tags: ["Codex", "ChatGPT", "Next.js"],
 		githubUrl: "https://github.com/wan-kong/codex-reset-monitor",
-		liveUrl: "https://codex.wankong.top",
+		liveUrl: "https://codex.imoment.top",
 		postSlug: "codex-reset-monitor",
 		icon: RiRadarLine,
 		iconClassName: "text-emerald-500",

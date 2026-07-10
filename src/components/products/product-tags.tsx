@@ -85,18 +85,18 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 		icon: <Codex.Color></Codex.Color>,
 		name: "Codex",
 	},
-	Douyin:{
-		icon:<SiTiktok color={SiTiktokHex} />,
-		name:"Douyin"
+	Douyin: {
+		icon: <SiTiktok color={SiTiktokHex} />,
+		name: "Douyin",
 	},
-	"Tampermonkey":{
-		icon:<SiTampermonkey color={SiTampermonkeyHex}></SiTampermonkey>,
-		name:"Tampermonkey"
+	Tampermonkey: {
+		icon: <SiTampermonkey color={SiTampermonkeyHex} />,
+		name: "Tampermonkey",
 	},
-	"Vite":{
-		icon:<SiVite  color={SiViteHex}/>,
-		name:"Vite"
-	}
+	Vite: {
+		icon: <SiVite color={SiViteHex} />,
+		name: "Vite",
+	},
 };
 
 export function ProductTags({ product }: { product: Product }) {
