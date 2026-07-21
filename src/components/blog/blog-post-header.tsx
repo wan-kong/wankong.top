@@ -2,6 +2,7 @@ import { RiArrowLeftLine } from "@remixicon/react";
 import Link from "next/link";
 import { PostMetaTags } from "@/components/blog/post-meta-tags";
 import type { BlogPost } from "@/lib/blog";
+import { UserAvatar } from "../user-avatar/UserAvatar";
 
 export function BlogPostHeader({ post }: { post: BlogPost }) {
 	return (
@@ -23,6 +24,10 @@ export function BlogPostHeader({ post }: { post: BlogPost }) {
 					</p>
 				) : null}
 				<div className="mt-2 flex flex-wrap items-center gap-2 text-muted-foreground text-xs">
+					<div className="inline-flex items-center gap-1 border border-border px-2 py-1 font-data">
+						<UserAvatar className="size-4 p-0"></UserAvatar>
+						<span>wankong</span>
+					</div>
 					<PostMetaTags
 						date={post.date}
 						duration={post.duration}

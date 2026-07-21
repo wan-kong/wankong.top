@@ -6,11 +6,15 @@ const nextConfig: NextConfig = {
 	/* config options here */
 	output: "export",
 	pageExtensions: ["ts", "tsx", "md", "mdx"],
+	devIndicators: false,
 	typedRoutes: true,
 	reactCompiler: true,
 	images: {
 		unoptimized: true,
 		remotePatterns: [new URL("https://api.microlink.io")],
+	},
+	experimental: {
+		viewTransition: true,
 	},
 };
 

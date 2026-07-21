@@ -1,8 +1,8 @@
 import { RiArrowRightUpLine } from "@remixicon/react";
-import Image from "next/image";
 import Link from "next/link";
 import { PostMetaTags } from "@/components/blog/post-meta-tags";
 import type { BlogPostMeta, BlogYearSection } from "@/lib/blog";
+import { UserAvatar } from "../user-avatar/UserAvatar";
 
 function BlogArchiveHero() {
 	return (
@@ -15,16 +15,7 @@ function BlogArchiveHero() {
 					写点东西，记录当下，记录自己
 				</h1>
 			</div>
-			<div className="size-24 shrink-0 overflow-hidden rounded-full border border-border bg-muted p-1">
-				<Image
-					src="/imgs/avatar.webp"
-					width="640"
-					height={640}
-					alt="Wankong 的头像"
-					priority
-					className="size-full rounded-full object-cover"
-				/>
-			</div>
+			<UserAvatar></UserAvatar>
 		</section>
 	);
 }

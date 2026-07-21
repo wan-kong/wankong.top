@@ -252,6 +252,15 @@
 	mix-blend-mode: normal;
 }
 
+::view-transition-group(.site-avatar-morph) {
+	animation-duration: 420ms;
+	animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+::view-transition-image-pair(.site-avatar-morph) {
+	isolation: isolate;
+}
+
 @layer utilities {
 	.blog-enter {
 		animation: var(--animate-blog-enter);
@@ -271,6 +280,15 @@
 		.blog-enter,
 		.blog-card-enter,
 		.product-title-reveal {
+			animation: none;
+		}
+
+		::view-transition-group(.site-avatar-morph) {
+			animation-duration: 0s;
+		}
+
+		::view-transition-old(.site-avatar-morph),
+		::view-transition-new(.site-avatar-morph) {
 			animation: none;
 		}
 	}
