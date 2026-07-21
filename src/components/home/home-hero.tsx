@@ -1,26 +1,19 @@
 import { RiArrowRightUpLine, RiBox3Line } from "@remixicon/react";
-import Image from "next/image";
 import Link from "next/link";
+import type { HTMLAttributes } from "react";
 import { SplittingText } from "@/components/animate-ui/primitives/texts/splitting";
 import { buttonVariants } from "@/components/ui/button";
 import { EncryptedText } from "@/components/ui/encrypted-text";
 import { cn } from "@/lib/utils";
+import { UserAvatar } from "../user-avatar/UserAvatar";
 
 const HERO_DESCRIPTION = "只有你也想见我的时候，我们的相遇才有意义。";
 
-function HeroUserAvatar() {
+function HeroUserAvatar({ className }: HTMLAttributes<HTMLDivElement>) {
 	return (
-		<div className="mt-8">
-			<div className="size-24 overflow-hidden rounded-full border border-border bg-muted p-1">
-				<Image
-					src="/imgs/avatar.webp"
-					width="640"
-					height={640}
-					alt="Wankong 的头像"
-					priority
-					className="size-full rounded-full object-cover"
-				/>
-			</div>
+		<div className={cn(className)}>
+			<UserAvatar></UserAvatar>
+
 			<div className="my-5">
 				<div className="relative font-mono">
 					<SplittingText
@@ -56,7 +49,7 @@ export function HomeHero() {
 					></EncryptedText>{" "}
 				</div>
 			</div>
-			<HeroUserAvatar />
+			<HeroUserAvatar className="mt-8" />
 			<div className="mt-6 flex flex-wrap gap-3">
 				<Link
 					href="/blog"
