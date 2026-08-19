@@ -15,6 +15,9 @@ import {
 	SiVuedotjs,
 	SiVuedotjsHex,
 } from "@icons-pack/react-simple-icons";
+import { RiArrowRightUpLine } from "@remixicon/react";
+import Image from "next/image";
+import Link from "next/link";
 import { SkillBadge } from "@/components/skill-badge/skill-badge";
 import { buttonVariants } from "@/components/ui/button";
 import { LinkPreview } from "@/components/ui/link-preview";
@@ -120,15 +123,37 @@ export function AboutSection() {
 				</div>
 				<div className="grid gap-5 border-border border-l pl-4 sm:pl-5">
 					<TimelineItem label="01 / Build">
-						<p className="text-sm leading-7">
-							尝试构建一个和 AI 融合的题库检索系统，
+						<p className="flex items-center text-sm leading-7">
+							构建一个和 AI 融合的
+							<Link
+								href="/blog/imoment-builer"
+								target="_blank"
+								className={cn(
+									buttonVariants({
+										variant: "link",
+										size: "lg",
+									}),
+									"text-sm",
+									"ml-0 p-0",
+								)}
+							>
+								<Image
+									alt="imoment"
+									width={16}
+									height={16}
+									className="h-4 w-4"
+									src="https://imoment.top/logo.svg"
+								/>
+								<span> 题库检索系统</span>
+								<RiArrowRightUpLine></RiArrowRightUpLine>
+							</Link>
 						</p>
 					</TimelineItem>
 					<TimelineItem label="02 / Write">
 						<p className="text-sm leading-7">持续整理个人产品与工程笔记。</p>
 					</TimelineItem>
 					<TimelineItem label="03 / Study">
-						<p className="text-sm leading-7">学习Vue3源码</p>
+						<p className="text-sm leading-7">学习AI+产品设计+开发</p>
 					</TimelineItem>
 					<TimelineItem label="04 / Train">
 						<div className="text-sm leading-7">
@@ -139,7 +164,7 @@ export function AboutSection() {
 								isStatic
 								className={cn(
 									buttonVariants({ variant: "link", size: "lg" }),
-									"text-sm",
+									"px-1 text-sm",
 								)}
 							>
 								这里

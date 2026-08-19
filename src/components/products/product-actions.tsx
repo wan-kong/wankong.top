@@ -19,11 +19,13 @@ export function ProductActions({ product }: { product: Product }) {
 					<RiArticleLine className="size-3.5" />
 				</Link>
 			) : null}
-			<ProductAction
-				href={product.githubUrl}
-				icon={<SiGithub className="size-3.5" />}
-				label={`${product.name} GitHub`}
-			/>
+			{product.githubUrl ? (
+				<ProductAction
+					href={product.githubUrl}
+					icon={<SiGithub className="size-3.5" />}
+					label={`${product.name} GitHub`}
+				/>
+			) : null}
 			{product.liveUrl ? (
 				<ProductAction
 					href={product.liveUrl}

@@ -20,10 +20,11 @@ export type Product = {
 	platform: string;
 	year: string;
 	tags: string[];
-	githubUrl: string;
+	githubUrl?: string;
 	liveUrl?: string;
 	postSlug?: string;
-	icon: ComponentType<{ className?: string; color?: string }>;
+	icon?: ComponentType<{ className?: string; color?: string }>;
+	iconUrl?: string;
 	iconColor?: string;
 	iconClassName?: string;
 	accentClassName: string;
@@ -32,6 +33,23 @@ export type Product = {
 const iconFrameClassName = "border-border bg-background";
 
 export const products = [
+	{
+		slug: "imoment",
+		name: "意刻",
+		status: "已上线",
+		statusTone: "live",
+		tagline: "搜索问题，理解答案",
+		description:
+			"一个基于全文检索与多模型 AI 解读的智能问答平台，提供题目搜索、答案解析、用户与积分体系、开放 API 及多语言 SDK。",
+		platform: "Web Platform",
+		year: "2026",
+		tags: ["TanStack Start", "PostgreSQL", "Meilisearch", "AI SDK"],
+		liveUrl: "https://imoment.top",
+		postSlug: "imoment-builer",
+		iconUrl: "https://imoment.top/logo.svg",
+		iconClassName: "size-6",
+		accentClassName: iconFrameClassName,
+	},
 	{
 		slug: "fuck-douyin",
 		name: "抖音净化",

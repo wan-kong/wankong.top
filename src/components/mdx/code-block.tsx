@@ -3,6 +3,7 @@
 import { RiCheckLine, RiFileCopyLine } from "@remixicon/react";
 import {
 	type ComponentPropsWithoutRef,
+	cloneElement,
 	isValidElement,
 	useRef,
 	useState,
@@ -46,10 +47,25 @@ function getLanguage(children: CodeBlockProps["children"]) {
 	return LANGUAGE_LABELS[language] ?? language.toUpperCase();
 }
 
-export function CodeBlock({ children, className, ...props }: CodeBlockProps) {
+export function CodeBlock({
+	children,
+	className,
+	style,
+	...props
+}: CodeBlockProps) {
 	const preRef = useRef<HTMLPreElement>(null);
 	const [copied, setCopied] = useState(false);
 	const language = getLanguage(children);
+	const code = isValidElement<ComponentPropsWithoutRef<"code">>(children)
+		? cloneElement(children, {
+				className: "font-code",
+				style: {
+					...children.props.style,
+					fontFamily: "var(--font-code)",
+					fontVariantLigatures: "none",
+				},
+			})
+		: children;
 
 	const handleCopy = async () => {
 		const code = preRef.current?.innerText ?? "";
@@ -88,9 +104,14 @@ export function CodeBlock({ children, className, ...props }: CodeBlockProps) {
 					className,
 				)}
 				ref={preRef}
+				style={{
+					...style,
+					fontFamily: "var(--font-code)",
+					fontVariantLigatures: "none",
+				}}
 				{...props}
 			>
-				{children}
+				{code}
 			</pre>
 		</div>
 	);
