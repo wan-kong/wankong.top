@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
 	Doto,
+	Geist_Mono,
 	JetBrains_Mono,
 	Space_Grotesk,
 	Space_Mono,
@@ -13,6 +14,10 @@ import { cn } from "@/lib/utils";
 const jetbrainsMono = JetBrains_Mono({
 	subsets: ["latin"],
 	variable: "--font-mono",
+});
+
+const _geistMono = Geist_Mono({
+	variable: "--font-code",
 });
 
 const displayFont = Doto({

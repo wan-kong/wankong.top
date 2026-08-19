@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
 	reactCompiler: true,
 	images: {
 		unoptimized: true,
-		remotePatterns: [new URL("https://api.microlink.io")],
+		remotePatterns: [
+			new URL("https://api.microlink.io"),
+			new URL("https://imoment.top/logo.svg"),
+		],
 	},
 	experimental: {
 		viewTransition: true,

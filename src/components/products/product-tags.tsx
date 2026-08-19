@@ -3,7 +3,11 @@ import {
 	SiGitHex,
 	SiGooglechrome,
 	SiGooglechromeHex,
+	SiMeilisearch,
+	SiMeilisearchHex,
 	SiNextdotjs,
+	SiPostgresql,
+	SiPostgresqlHex,
 	SiRaycast,
 	SiRaycastHex,
 	SiReact,
@@ -12,6 +16,8 @@ import {
 	SiTailwindcssHex,
 	SiTampermonkey,
 	SiTampermonkeyHex,
+	SiTanstack,
+	SiTanstackHex,
 	SiTiktok,
 	SiTiktokHex,
 	SiTypescript,
@@ -53,9 +59,21 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 		icon: <RiAiGenerate />,
 		name: "LLM",
 	},
+	"AI SDK": {
+		icon: <RiAiGenerate />,
+		name: "AI SDK",
+	},
+	Meilisearch: {
+		icon: <SiMeilisearch color={SiMeilisearchHex} />,
+		name: "Meilisearch",
+	},
 	"Next.js": {
 		icon: <SiNextdotjs className="text-black dark:text-white" />,
 		name: "Next.js",
+	},
+	PostgreSQL: {
+		icon: <SiPostgresql color={SiPostgresqlHex} />,
+		name: "PostgreSQL",
 	},
 	Raycast: {
 		icon: <SiRaycast color={SiRaycastHex} />,
@@ -68,6 +86,10 @@ const TECH_BADGES: Record<string, SkillBadgeItem> = {
 	Search: {
 		icon: <RiSearchLine />,
 		name: "Search",
+	},
+	"TanStack Start": {
+		icon: <SiTanstack color={SiTanstackHex} />,
+		name: "TanStack Start",
 	},
 	"Tailwind CSS": {
 		icon: <SiTailwindcss color={SiTailwindcssHex} />,

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +11,8 @@ export function ProductIcon({
 	className?: string;
 	iconClassName?: string;
 }) {
+	const Icon = product.icon;
+
 	return (
 		<span
 			className={cn(
@@ -18,10 +21,20 @@ export function ProductIcon({
 				className,
 			)}
 		>
-			<product.icon
-				className={cn(iconClassName, product.iconClassName)}
-				color={product.iconColor}
-			/>
+			{product.iconUrl ? (
+				<Image
+					src={product.iconUrl}
+					alt=""
+					width={24}
+					height={24}
+					className={cn("object-contain", iconClassName, product.iconClassName)}
+				/>
+			) : Icon ? (
+				<Icon
+					className={cn(iconClassName, product.iconClassName)}
+					color={product.iconColor}
+				/>
+			) : null}
 		</span>
 	);
 }
