@@ -16,9 +16,7 @@ const nextConfig: NextConfig = {
 			new URL("https://imoment.top/logo.svg"),
 		],
 	},
-	experimental: {
-		viewTransition: true,
-	},
+	cacheComponents: false,
 };
 
 export default createMDX({
