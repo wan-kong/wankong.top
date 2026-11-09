@@ -43,7 +43,7 @@ Two content sources drive the site; adding content means editing these, not addi
 
 2. **Post bodies rendered at build time** — `src/app/(main)/blog/[slug]/page.tsx` calls `@mdx-js/mdx`'s `evaluate()` synchronously during prerender. Uses remark-gfm, `remarkHeadingIds`, and rehype-shiki. The `evaluate()` call must pass `...runtime` from `react/jsx-runtime` and `baseUrl: import.meta.url`.
 
-Both paths share Shiki config from `src/lib/mdx-shiki.ts` (github-light/dark themes, `light-dark()` CSS). Custom element mappings (`a`→external links, `img`→ImageZoom, `pre`→CodeBlock) plus MDX-callable components (`ScriptInstall`, `GithubCard`, `Callout`, `Steps`, `Step`, `Kbd`, `NetworkPanel`, `NetworkInspector`, `ConsoleView`, `ScrollFadeDemo`, `ShimmerDemo`) are defined in `src/mdx-components.tsx` and passed as `components` to the MDX render.
+Both paths share Shiki config from `src/lib/mdx-shiki.ts` (github-light/dark themes, `light-dark()` CSS). Custom element mappings (`a`→external links, `img`→ImageZoom, `pre`→CodeBlock) plus MDX-callable components (`ScriptInstall`, `GithubCard`, `GithubRelease`, `Callout`, `Steps`, `Step`, `Kbd`, `NetworkPanel`, `NetworkInspector`, `ConsoleView`, `ScrollFadeDemo`, `ShimmerDemo`) are defined in `src/mdx-components.tsx` and passed as `components` to the MDX render.
 
 **TOC synchronization constraint**: The TOC is parsed from raw markdown by `src/lib/mdx-toc.ts` (`getTableOfContents` — regex over headings, skips code fences). The slugger logic in `getTableOfContents` and `remarkHeadingIds` must stay identical — if you modify one, update both.
 

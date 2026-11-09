@@ -1,0 +1,110 @@
+---
+title: frpc：给 frpc 一个窗口
+date: 2026-11-09
+lang: zh-CN
+hidden: false
+updated: 2026-11-09
+description: 我做了一个 frpc 桌面客户端。连接、隧道、状态和日志都在一个窗口里，macOS 和 Windows 都能用。
+duration: 6min
+tags: 软件,frp,MyGo,macOS,Windows
+---
+
+## 需求
+
+上周刚好有个需求需要联调回调服务，所以自然而然的就想到了[frp](https://github.com/fatedier/frp)。
+
+[frp](https://github.com/fatedier/frp) 很好用。配置文件写清楚，一条 `frpc -c frpc.toml` 就能把内网服务推到公网。
+
+为了更好的管理 `frpc.toml` 文件，很久之前我就下载一款`frpc-desktop`的软件
+
+但我突然发现，这款功能简单的软件，是用electron编写的，内存和存储都占据了300MB+。看了看我所剩不多的空间，想重写一个！
+
+最近频繁刷到 [MyGo](https://mygo.egoist.dev/docs) 的消息，体积小/速度快/响应迅速/高度自定义，还可以跨平台，赶紧试试。
+
+坏了，我不会`Golang` 。。。 老实说，我对go的了解仅限于如何拼写 `go` 这个单词。
+
+问题不大，现在是AI时代，许愿式编程，许个愿试试呗。
+
+就这样，耗费了3个5h的窗口和 亿些 DeepSeek 的 token, 在我仍然不会 Golang 语法的情况下，[frpc](https://github.com/wan-kong/frpc) 诞生了！
+
+
+<ImageZoom
+  alt="Frpc-Desktop 主窗口：左边管理连接，右边查看隧道与状态"
+  className="rounded-2xl border border-border"
+  src="/imgs/posts/frpc-app-window.webp"
+/>
+
+## 可以做什么
+
+- 自带最新版本的 `fprc` 二进制文件, 同时提供多种版本的下载和管理。
+- 支持多个服务端，独立进程，自动重连，自动重试。
+- 隧道可单独启停，进程之间互不影响。
+- 可视化编辑配置文件，支持导入/导出。
+- 支持分组/筛选/日志查看/暗色模式等。
+
+<Notice type="info" title="配置放在哪">
+  连接与凭证保存在用户目录的 `~/.frpc/config.json`，Windows 则是 `%APPDATA%\frpc\config.json`。
+</Notice>
+
+## AI的强大
+
+frp是个可以称得上是互联网基建的软件，所以AI对于frp的了解相当深厚，我自己使用的只是很浅显的配置几个简单的参数，但是在 仅输入一段提示词的情况下，就已经考虑到了分组/多进程/配置项的完整可视化编辑等。
+
+我自己写的话，至少第一版可能是不会去考虑的。
+
+我是在周四下班前准备写这个项目，然后就先让AI 输出了份功能需求拆分和设计文稿，就设定了个 `goal` 让其自己运行。
+
+第二天就拿到了一份和现在差距不大的初版，震惊/瘫坐/无力 🤯。
+
+## MyGo
+
+相对于AI的高效输出，[MyGo](https://mygo.egoist.dev/docs) 给了我更多惊喜：
+
+在第一天的初版完成之后，即时我没有安装任何skill/增加更多提示词。在基础功能完成之后，发现自动安装了`mygo-maintenance` 的Skill，在帮我处理性能测试，动画优化等等。。
+
+高度自定义的样式风格（虽然我目前还用不到）。还可以跨平台！
+
+在macOS下，自带`frc`离线文件的情况下，仍然只有10MB出头的尺寸。
+
+都让我没有了去选别的框架的理由。
+
+## 下载
+
+<GithubRelease
+  repo="wan-kong/frpc"
+  name="frpc"
+  icon="/imgs/posts/frpc-app-icon.webp"
+  actionLabel="前往下载"
+  href="https://github.com/wan-kong/frpc/releases/latest"
+  assets={[
+    {
+      name: "frpc-0.1.1-arm64.dmg",
+      label: "macOS Apple Silicon · 推荐",
+      platform: "macos",
+      featured: true,
+    },
+    {
+      name: "frpc-0.1.1-darwin-arm64.tar.gz",
+      label: "macOS Apple Silicon · tar.gz",
+      platform: "archive",
+    },
+    {
+      name: "frpc-setup-0.1.1-amd64.exe",
+      label: "Windows 10 / 11 · 安装包",
+      platform: "windows",
+    },
+    {
+      name: "frpc-0.1.1-windows-amd64.tar.gz",
+      label: "Windows · tar.gz",
+      platform: "archive",
+    },
+  ]}
+/>
+
+<Notice type="info" title="macOS下的签名问题">
+macOS 版本使用 ad-hoc 签名，第一次打开需要在 Finder 里右键选择「打开」。Windows 安装包没有签名，首次运行可能触发 SmartScreen 提示。
+</Notice>
+
+<Notice type="info" title="题外话">
+发布完0.1.1版本之后，我还是没开始学 `Golang` 的基础语法。
+</Notice>

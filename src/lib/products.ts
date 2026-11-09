@@ -34,6 +34,23 @@ const iconFrameClassName = "border-border bg-background";
 
 export const products = [
 	{
+		slug: "frpc",
+		name: "Frpc-Desktop",
+		status: "已上线",
+		statusTone: "live",
+		tagline: "把 frpc 的连接、隧道、状态和日志放进一个窗口",
+		description:
+			"用 MyGo 构建的 frpc 桌面客户端，支持 macOS 与 Windows。可同时管理多个 frps 连接，提供七种隧道与访问者表单、frpc.toml 导入和日志筛选，关闭窗口后连接继续在后台运行。",
+		platform: "Desktop App",
+		year: "2026",
+		tags: ["MyGo", "Go", "frp", "macOS", "Windows"],
+		githubUrl: "https://github.com/wan-kong/frpc",
+		postSlug: "frpc-app",
+		iconUrl: "/imgs/posts/frpc-app-icon.webp",
+		iconClassName: "size-6",
+		accentClassName: iconFrameClassName,
+	},
+	{
 		slug: "imoment",
 		name: "意刻",
 		status: "已上线",

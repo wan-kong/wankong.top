@@ -8,6 +8,7 @@ import {
 	ShimmerDemo,
 } from "@/components/mdx/css-scroll-fade-shimmer-demo";
 import { GithubCard } from "@/components/mdx/github-card";
+import { GithubRelease } from "@/components/mdx/github-release";
 import { ImageZoom } from "@/components/mdx/image-zoom";
 import { Kbd } from "@/components/mdx/kbd";
 import { NetworkInspector } from "@/components/mdx/network-inspector";
@@ -25,6 +26,8 @@ const components: MDXComponents = {
 	pre: CodeBlock,
 	ScriptInstall,
 	GithubCard,
+	GithubRelease,
+	ImageZoom,
 	Callout,
 	Steps,
 	Step,
