@@ -7,7 +7,7 @@ import {
 	RiFileZipLine,
 	RiWindowsFill,
 } from "@remixicon/react";
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 export type AssetPlatform = "macos" | "windows" | "archive";
 
@@ -62,7 +62,7 @@ function AssetIcon({
 
 type GithubReleaseProps = {
 	repo: string;
-	tag: string;
+	tag?: string;
 	name?: string;
 	published?: string;
 	latest?: boolean;
@@ -82,12 +82,10 @@ export function GithubRelease({
 	assets = [],
 	children,
 }: GithubReleaseProps) {
-	const url =
-		href ??`https://github.com/${repo}/releases/latest}`;
-	 
+	const url = href ?? `https://github.com/${repo}/releases/latest`;
+
 	const featured = assets.find((asset) => asset.featured);
 	const others = assets.filter((asset) => !asset.featured);
-	
 
 	return (
 		<section className="not-prose my-14 font-sans">
@@ -104,7 +102,7 @@ export function GithubRelease({
 				<h3 className="mt-5 font-semibold text-[28px] text-foreground leading-none tracking-tight">
 					{name}
 				</h3>
-				
+
 				{children ? (
 					<div className="mt-3 max-w-sm text-[15px] text-foreground/70 leading-6 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-3 [&_code]:font-mono [&_p:last-child]:mb-0 [&_p]:mb-2">
 						{children}
@@ -126,7 +124,6 @@ export function GithubRelease({
 						{actionLabel}
 					</a>
 				) : null}
-				
 			</div>
 
 			{others.length > 0 ? (
