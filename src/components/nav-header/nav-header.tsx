@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import Link from "next/link";
+import { BlogBackLink } from "@/components/nav-header/blog-back-link";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -29,9 +30,12 @@ export const NavHeader = () => {
 	return (
 		<header className="mx-auto w-full px-4 py-4 sm:px-6">
 			<div className="mx-auto flex max-w-5xl items-center justify-between gap-4">
-				<Link href="/" aria-label="Wankong 首页">
-					{/* <Logo /> */}
-				</Link>
+				<div className="flex items-center gap-3">
+					<Link href="/" aria-label="Wankong 首页">
+						{/* <Logo /> */}
+					</Link>
+					<BlogBackLink />
+				</div>
 				<nav className="flex items-center justify-center gap-1 sm:gap-2">
 					{NavList.map((item) => (
 						<Link
