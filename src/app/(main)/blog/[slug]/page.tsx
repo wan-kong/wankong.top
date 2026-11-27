@@ -47,7 +47,7 @@ export async function generateMetadata({
 	};
 }
 
-async function renderMdx(content: string) {
+async function renderMdx(content: string, album: string) {
 	const { default: MDXContent } = await evaluate(content, {
 		...runtime,
 		baseUrl: import.meta.url,
@@ -55,7 +55,7 @@ async function renderMdx(content: string) {
 		rehypePlugins: [[rehypeShiki, shikiOptions]],
 	});
 
-	return <MDXContent components={useMDXComponents()} />;
+	return <MDXContent components={useMDXComponents(album)} />;
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 	}
 
 	const toc = getTableOfContents(post.content);
-	const content = await renderMdx(post.content);
+	const content = await renderMdx(post.content, post.slug);
 
 	return (
 		<article className="mx-auto min-h-screen max-w-5xl px-4 sm:px-6">
